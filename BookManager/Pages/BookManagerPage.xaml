@@ -1,0 +1,76 @@
+﻿<Page x:Class="BookManager.BookManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Book Manager">
+    <Grid Height="600" Background="#FFF4F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.ColumnSpan="2" VerticalAlignment="Center" Background="#606C5D">
+            <TextBox FontWeight="Bold" BorderBrush="Transparent" Margin="10" Background="Transparent" Foreground="White" Text="Your Book Shelf App" />
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" >
+            <TextBlock FontWeight="Bold" Margin="10" Text="Your saved books: " />
+            <ScrollViewer BorderBrush="Black" BorderThickness="2" Height="350">
+                <ItemsControl ItemsSource="{Binding BooksList}" Margin="10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:BookItem/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+            
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
+            <TextBlock FontWeight="Bold" Margin="10" Text="Book title: " />
+            <TextBox Text="{Binding NewBookTitle, Mode=TwoWay}">
+                <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock Margin="10" FontWeight="Bold" Text="Book author: " />
+            <TextBox Text="{Binding NewBookAuthor, Mode=TwoWay}">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                        <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </TextBox.Resources> 
+            </TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button  Margin="20"  Width="100" Style="{StaticResource DefaultStyle}" Command="{Binding AddNewBookCommand}" Content="Add New" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="Padding" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button  FontSize="8" Margin="20" Width="100" Style="{StaticResource DefaultStyle}" Click="OpenSecondWindowButton_Click"  Content="Delete Selected">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                        <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="BookManager.Pages.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookManager.Pages"
+        mc:Ignorable="d"
+        Height="200" Width="300"
+        Title="DialogWindow">
+    <Grid>
+        <TextBlock FontWeight="Bold" Margin="20" Text="Do you wnat to remove selected positions?" />
+
+        <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button  Margin="20"  Width="100" Style="{StaticResource DefaultStyle}" Click="Delete_and_Close" Command="{Binding RemoveBookCommand}" Content="Delete">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                        <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button  FontSize="8" Margin="20" Width="100" Style="{StaticResource DefaultStyle}" Background="Gray" Click="CloseButton_Click"  Content="Cancel">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                        <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
